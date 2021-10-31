@@ -18,10 +18,15 @@ main();
 
 const loop = async () => {
   const data = await requestBinance(endTime);
+  if (data.length === 0) {
+    return ;
+  }
+
   data.pop(); // last one correspond to the endtime that is already printed
-  endTime = data[0][0];
-  print(data.reverse());
-  setTimeout(loop, 1000);
+  endTime = data[0][0]; // Set the new endTime
+  print(data.reverse()); // Display current batch on stdout
+
+  setTimeout(loop, 70); // Repeat with 70ms delay to respect quota
 }
 
 const print = (arr) => {
