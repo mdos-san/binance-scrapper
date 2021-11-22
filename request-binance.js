@@ -1,6 +1,6 @@
-const LIMIT = "1000";
-
 const https = require("https");
+
+const LIMIT = "1000";
 
 const requestBinanceFactory = (baseUrl, path, symbol, interval) => (endTime) => {
   return new Promise((resolve, reject) => {
